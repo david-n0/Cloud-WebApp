@@ -1,0 +1,30 @@
+<div *ngIf="hasAccess==true">
+  <h3>Users displaying</h3>
+<br>
+  <table >
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Permissions</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.surname}}</td>
+      <td *ngIf="canEdit" (click)="goToEditUser(user)" style="color:#ff5e6c">
+        {{user.username}}
+      </td>
+      <td *ngIf="!canEdit">
+        {{user.username}}
+      </td>
+      <td>{{user.permissions}}</td>
+      <td>
+        <button class="btn" *ngIf="canDelete" (click)="deleteUser(user.id)">DELETE USER</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<h1 *ngIf="hasAccess==false">YOU DON'T HAVE ACCESS!</h1>

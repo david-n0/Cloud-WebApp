@@ -1,0 +1,31 @@
+<h3>User editing</h3>
+
+<form  #form="ngForm" (submit)="updateUser(form)">
+
+  <label class="label">Name:</label>
+  <br/>
+  <input class="input" type="text" [(ngModel)]="userName" name="name"/>
+  <br/>
+
+  <label class="label">Surname:</label>
+  <br/>
+  <input class="input" type="text" [(ngModel)]="userSurname" name="surname"/>
+  <br/>
+
+  <label class="label">Email:</label>
+  <br/>
+  <input class="input" type="email" [(ngModel)]="userUsername" name="email"/>
+  <br/>
+
+  <label class="label">
+    <select style="width:200px" [(ngModel)]="userPermissions" name="permissions" multiple>
+      <option *ngFor="let permission of allPermissions" [value]="permission">
+        {{ permission }}
+      </option>
+    </select>
+  </label>
+  <br/>
+  <button class="btn" [disabled]="!form.valid">Update User</button>
+  <br/>
+  <h3 *ngIf="userUpdated">User updated!</h3>
+</form>

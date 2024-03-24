@@ -1,0 +1,60 @@
+<div class="container">
+  <form name="search" (submit)="searchNode()" class="forma mb-3">
+    <div class="form-group">
+      <h3>Node search</h3>
+      <br>
+      <label for="name">Search nodes by name:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="name" required [(ngModel)]="name"/>
+      <br>
+      <label for="name">Search nodes by status:</label>
+      <input type="text" class="form-control" id="status" name="status" placeholder="running,stopped"
+             [(ngModel)]="status">
+      <br>
+      <label for="name">Search nodes by creation date:</label>
+      <input type="text" class="form-control" id="from" name="from" placeholder="from" [(ngModel)]="startDate">
+      <input type="text" class="form-control" id="to" name="to" placeholder="to" [(ngModel)]="endDate">
+    </div>
+    <button type="submit" class="btnSrc btn-primary">Search</button>
+  </form>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Created At</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let node of nodes">
+      <td>{{node.id}}</td>
+      <td>{{node.name}}</td>
+      <td>{{node.status}}</td>
+      <td>{{node.createdAt}}</td>
+      <td *ngIf="deletePermission">
+        <button class="btnDlt" type="delete" (click)="deleteNode(node)">Delete</button>
+      </td>
+      <td *ngIf="startPermission">
+        <button class="btnStr"type="start" (click)="start(node)">Start</button>
+      </td>
+      <td *ngIf="stopPermission">
+        <button class="btnStp"type="stop" (click)="stop(node)">Stop</button>
+      </td>
+      <td *ngIf="restartPermission">
+        <button class="btnRst" type="restart" (click)="restart(node)">Restart</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="errorMessage != ''">
+  <label style="color: red"> {{ errorMessage }} </label>
+</div>
+
+<div *ngIf="successMessage != ''">
+  <label style="color: green"> {{ successMessage }} </label>
+</div>
+

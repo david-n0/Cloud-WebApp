@@ -1,0 +1,43 @@
+<form *ngIf="hasAccess==true" #form="ngForm" (submit)="addUser(form)">
+  <h3>User creating</h3>
+
+  <label class="label">
+    Name:
+  </label> <br />
+  <input class="input"type="name" name="name" [(ngModel)]="name" required/>
+  <br />
+  <label class="label">
+    Surname:
+  </label>
+  <br />
+  <input class="input" type="surname" name="surname" [(ngModel)]="surname" required />
+  <br />
+  <label class="label">
+    Email:
+  </label>
+  <br />
+  <input class="input" type="email" name="email" [(ngModel)]="username" required/>
+  <br />
+  <label class="label">Password:</label>
+  <br />
+  <input class="input" type="password" name="password" [(ngModel)]="password" required/>
+  <br />
+  <label class="label">Permissions:</label>
+  <br />
+  <select [(ngModel)]="selectedPermissions" name="selectedPermissions" multiple>
+    <option *ngFor="let permission of allPermissions" [value]="permission">
+      {{ permission }}
+    </option>
+  </select>
+  <br />
+  <button class="btn" [disabled]="!form.valid">Add User</button>
+
+  <div *ngIf="errorPrint">
+    <div class="alert alert-danger" role="alert">Email already in use!</div>
+  </div>
+
+  <h3 *ngIf="userAdded">User added!</h3>
+</form>
+
+<h1 *ngIf="hasAccess==false">YOU DON'T HAVE ACCESS!</h1>
+

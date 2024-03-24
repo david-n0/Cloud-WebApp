@@ -1,0 +1,46 @@
+:host {
+  padding-top: 25px;
+  padding-left: 25px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.btn{
+  transition: 0.3s;
+  font-size: 18px;
+  color: 3D2B1F;
+  background-color: #ff5e6c;
+  border-color: lightpink;
+  border-radius: 5px;
+  width: 100px;
+  height:50px;
+  margin: 10px;
+}
+.btn:hover{
+  transition: 0.3s;
+  font-size: 20px;
+  background-color: lightcoral;
+  border-radius: 5px;
+  width: 105px;
+  height:55px;
+  margin: 10px;
+}
+.input{
+  border-radius: 10px;
+  color: darkblue;
+}
+.h{
+  text-shadow: 3px 4px 7px #ff5e6c;
+  color: #04AA6D;
+  font-size:60px;
+}
+h3{
+  text-shadow: 2px 3px 5px lightpink;
+  color: #ff5e6c;
+  margin: 7px;
+}
+.label{
+  color: #3D2B1F;
+  font-size:18px;
+}
+

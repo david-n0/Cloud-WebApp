@@ -1,0 +1,18 @@
+
+<form>
+  <h3>Sign in</h3>
+  <br />
+  <label class="label">Email:</label>
+  <br />
+  <input class="input" type="email" name="email" [(ngModel)]="email" />
+  <br />
+  <label class="label">Password:</label>
+  <br />
+  <input class="input" type="password" name="password" [(ngModel)]="password" />
+  <br />
+  <button class="btn" (click)="login()">Login</button>
+
+  <div *ngIf="printError">
+    <div class="alert alert-danger" role="alert">Email or Password incorrect!</div>
+  </div>
+</form>
