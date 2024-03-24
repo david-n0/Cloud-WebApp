@@ -1,27 +1,32 @@
-# D3NWPFRONTEND
+This GitHub repository hosts the implementation of a web application designed to simulate our cloud provider services. The application aims to create an environment where users can manage and control the state of virtual machines and associated resources, providing a seamless experience.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+##Project Overview
+The project focuses on two main domains: user management and machine management. Users are able to create and control their virtual machines within the application. Each machine is associated with its creator, and users have visibility only to their own machines. The core functionalities include:
 
-## Development server
+User Management: Extends functionalities from the previous assignment, with additional permissions for machine management.
+Machine Management: Includes actions such as searching, starting, stopping, restarting, creating, and destroying machines, each accompanied by specific permissions.
+#Requirements
+Machines are defined by certain attributes, including ID, status, creator reference, and an active flag for soft deletion. Actions like search, start, stop, restart, create, and destroy are governed by corresponding permissions. Operations like start, stop, and restart have a time delay and execute asynchronously in the background.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#Actions on Machines
+SEARCH: Retrieves a list of active machines based on user-defined parameters.
+START: Initiates the start process for a machine.
+STOP: Initiates the stop process for a machine.
+RESTART: Initiates the restart process for a machine.
+CREATE: Instantly creates a new machine.
+DESTROY: Marks a machine as deleted without removing it from the database.
+#Scheduling Operations
+Operations such as START, STOP, and RESTART can be scheduled for future execution, with the system attempting to execute them at the specified time.
 
-## Code scaffolding
+#Frontend Implementation
+In addition to user management interfaces, the frontend includes three new pages:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Machine Search: Displays all machines on page load and provides a form for advanced searching based on backend functionalities.
+Machine Creation: Allows users to create new machines with a simple form.
+Error History Page: Displays errors encountered during scheduled operations execution, limited to the logged-in user's machines.
+##Technologies
+#Backend:
+Framework: Spring or JBoss
+Database: Relational Database
+#Frontend:
+Framework: Angular 2+
